@@ -12,6 +12,7 @@
 <meta property="og:title" content="Atharva Sabnis">
 <meta property="og:description" content="I study how new technology gets past the people who have to say yes first. Eleven stories and some research, from Dubai.">
 <meta property="og:url" content="https://atharvasabnis.com/">
+<meta property="og:image" content="https://atharvasabnis.com/portrait.jpg">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +28,7 @@
   "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"},
   "alumniOf": {"@type": "CollegeOrUniversity", "name": "Rochester Institute of Technology"},
   "knowsAbout": ["Generative engine optimisation", "AI answer accuracy", "UAE virtual-asset regulation", "Technology adoption", "Industrial AI", "Climate technology", "Digital assets"],
+  "image": "https://atharvasabnis.com/portrait.jpg",
   "sameAs": ["https://github.com/atharvasabnis1", "https://papers.ssrn.com/abstract=7648478", "https://osf.io/a3jk5"]
 }
 </script>
@@ -105,10 +107,9 @@ p { margin: 0 0 1rem; }
 .hero .lede { font-size: clamp(1.12rem, 1.5vw, 1.3rem); line-height: 1.5; color: var(--ink-2); max-width: 56ch; }
 .hero .lede p:last-of-type { margin-bottom: 1.6rem; }
 .hero .actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-.portrait { aspect-ratio: 4 / 5; max-width: 420px; justify-self: end; width: 100%; background: var(--paper-2); position: relative; overflow: hidden; }
-.portrait svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.portrait .cap { position: absolute; left: 1rem; bottom: 1rem; }
-@media (max-width: 899px) { .portrait { max-width: 320px; aspect-ratio: 1; justify-self: start; } }
+.byline-photo { display: block; width: 180px; max-width: 100%; margin: 0 0 1rem; }
+.byline-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 2px; background: var(--paper-2); }
+@media (max-width: 899px) { .byline-photo { width: 120px; } }
 
 /* sections */
 section.s { padding: clamp(3rem, 6vw, 5.5rem) 0; border-top: 1px solid var(--rule); }
@@ -254,7 +255,13 @@ footer { padding: 2rem 0 3rem; font-family: var(--display); font-size: 0.82rem; 
     <div class="eyebrow k"><span>Dubai</span><span>Independent researcher</span><span>Adoption in regulated markets</span></div>
     <h1>I study how new technology gets past the people who have to <em>say yes</em> first.</h1>
     <div class="below">
-      <div class="gutter"><span class="k g">A note</span></div>
+      <div class="gutter">
+        <picture class="byline-photo">
+          <source srcset="portrait.webp" type="image/webp">
+          <img src="portrait.jpg" alt="Atharva Sabnis" width="400" height="400" loading="eager" decoding="async">
+        </picture>
+        <span class="k g">A note</span>
+      </div>
       <div class="lede">
         <p>For most of my working life I was the one trying to get it past them: a QA head at a pharma plant, a taxi union, a hotel chain's housekeeping director, a bank's compliance desk, an exchange's legal team. The technology changed every time. The conversation did not.</p>
         <p>These days the first person asked is often not a person. Someone types a question about a city's rules or its businesses into an AI assistant, and that answer lands before any human's does. I have started measuring how good it is. This page is where the notes live.</p>
