@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atharva Sabnis</title>
+<meta name="description" content="Atharva Sabnis, Dubai. Notes on how new technology gets past the people who have to say yes first, and research on what AI systems tell people about UAE rules.">
+<link rel="canonical" href="https://atharvasabnis.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%230a6b4f%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27Arial%27 font-weight=%27900%27 font-size=%2718%27 fill=%27white%27 text-anchor=%27middle%27%3EA%3C/text%3E%3C/svg%3E">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="Plain-text profile for AI agents">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Atharva Sabnis">
+<meta property="og:description" content="I study how new technology gets past the people who have to say yes first. Eleven stories and some research, from Dubai.">
+<meta property="og:url" content="https://atharvasabnis.com/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Atharva Sabnis",
+  "url": "https://atharvasabnis.com/",
+  "jobTitle": "Independent researcher, technology adoption in regulated markets and AI answer accuracy",
+  "description": "Researcher and operator based in Dubai. Writes about how new technology gets past regulators, unions, hotel chains, exchanges and enterprise buyers, drawing on eleven cases from India and the Gulf, and publishes audits of what AI systems say about UAE regulation.",
+  "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"},
+  "alumniOf": {"@type": "CollegeOrUniversity", "name": "Rochester Institute of Technology"},
+  "knowsAbout": ["Generative engine optimisation", "AI answer accuracy", "UAE virtual-asset regulation", "Technology adoption", "Industrial AI", "Climate technology", "Digital assets"],
+  "sameAs": ["https://github.com/atharvasabnis1", "https://papers.ssrn.com/abstract=7648478", "https://osf.io/a3jk5"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "Core-answer agreement and elaboration uncertainty in AI answers on UAE virtual-asset regulation: a pilot audit of three consumer engines",
+  "author": {"@type": "Person", "name": "Atharva Sabnis"},
+  "publisher": {"@type": "Organization", "name": "SSRN"},
+  "url": "https://papers.ssrn.com/abstract=7648478"
+}
+</script>
+<style>
+:root {
+  /* Editorial grid: a narrow left gutter carries section numbers and labels; content sits right. White, one green, hairlines. */
+  --paper: #ffffff;
+  --paper-2: #f3f5f4;
+  --ink: #0b0d0c;
+  --ink-2: #3f4543;
+  --ink-3: #7a807d;
+  --rule: #e2e6e4;
+  --rule-2: #0b0d0c;
+  --green: #0a6b4f;
+  --green-deep: #084d39;
+  --green-soft: rgba(10,107,79,0.08);
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Lora", Georgia, serif;
+  --maxw: 1280px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 1.05rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: var(--ink-3); }
+a:hover { text-decoration-color: var(--green); color: var(--green); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+h1, h2, h3, .d { font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; font-variation-settings: "wdth" 90; line-height: 1; }
+p { margin: 0 0 1rem; }
+.wrap { width: min(var(--maxw), 100% - 3rem); margin-inline: auto; }
+.k { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); font-variation-settings: "wdth" 110; }
+.k.g { color: var(--green); }
+.btn { font-family: var(--display); font-weight: 600; font-size: 0.92rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.25rem; border-radius: 999px; background: var(--ink); color: #fff; border: 0; cursor: pointer; }
+.btn:hover { background: var(--green); color: #fff; }
+.btn.g { background: var(--green); }
+.btn.g:hover { background: var(--green-deep); }
+.btn.o { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn.o:hover { border-color: var(--green); color: var(--green); background: transparent; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,0.86); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.nav .wrap { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+.brand { font-family: var(--display); font-weight: 900; text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.9rem; white-space: nowrap; }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.8rem; font-family: var(--display); font-size: 0.88rem; font-weight: 600; }
+.nav ul a { text-decoration: none; color: var(--ink-2); }
+.nav ul a:hover { color: var(--green); }
+@media (max-width: 640px) { .nav ul { gap: 1rem; font-size: 0.8rem; } .nav ul li:nth-child(1), .nav ul li:nth-child(4) { display: none; } }
+
+/* grid primitive: gutter + content */
+.row { display: grid; grid-template-columns: 1fr; gap: 1rem 2rem; }
+@media (min-width: 900px) { .row { grid-template-columns: 180px 1fr; gap: 1rem 3rem; } }
+.gutter { position: relative; }
+.row > * { min-width: 0; }
+.study > *, .two > *, .three > *, .case > * { min-width: 0; }
+@media (min-width: 900px) { .gutter .stick { position: sticky; top: 5.5rem; } }
+.gutter .num { font-family: var(--display); font-weight: 800; font-size: 0.85rem; color: var(--green); letter-spacing: 0.04em; display: block; margin-bottom: 0.3rem; }
+
+/* hero */
+.hero { padding: clamp(3rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 4.5rem); }
+.hero .eyebrow { display: flex; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.hero h1 { font-size: clamp(2.8rem, 8.6vw, 7.4rem); font-weight: 900; letter-spacing: -0.05em; font-variation-settings: "wdth" 86; max-width: 14ch; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.hero h1 em { font-style: normal; color: var(--green); }
+.hero .below { display: grid; grid-template-columns: 1fr; gap: 2rem 3rem; align-items: start; }
+@media (min-width: 900px) { .hero .below { grid-template-columns: 180px 1fr 1fr; } }
+.hero .lede { font-size: clamp(1.12rem, 1.5vw, 1.3rem); line-height: 1.5; color: var(--ink-2); max-width: 44ch; }
+.hero .lede p:last-of-type { margin-bottom: 1.6rem; }
+.hero .actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.portrait { aspect-ratio: 4 / 5; max-width: 420px; justify-self: end; width: 100%; background: var(--paper-2); position: relative; overflow: hidden; }
+.portrait svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.portrait .cap { position: absolute; left: 1rem; bottom: 1rem; }
+@media (max-width: 899px) { .portrait { max-width: 320px; aspect-ratio: 1; justify-self: start; } }
+
+/* sections */
+section.s { padding: clamp(3rem, 6vw, 5.5rem) 0; border-top: 1px solid var(--rule); }
+section.s h2 { font-size: clamp(2rem, 4.4vw, 3.6rem); margin-bottom: 1.6rem; }
+.lead { font-size: clamp(1.08rem, 1.3vw, 1.2rem); color: var(--ink-2); max-width: 58ch; }
+
+/* approach */
+.three { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--rule-2); margin-top: 2.4rem; }
+@media (min-width: 760px) { .three { grid-template-columns: repeat(3, 1fr); } }
+.three > div { padding: 1.6rem 1.6rem 1.8rem 0; border-bottom: 1px solid var(--rule); }
+@media (min-width: 760px) { .three > div { border-bottom: 0; border-right: 1px solid var(--rule); padding-right: 1.6rem; padding-left: 1.6rem; } .three > div:first-child { padding-left: 0; } .three > div:last-child { border-right: 0; } }
+.three .k { display: block; margin-bottom: 1rem; }
+.three h3 { font-size: 1.45rem; margin-bottom: 0.9rem; letter-spacing: -0.025em; font-weight: 800; }
+.three p { font-size: 0.98rem; color: var(--ink-2); margin: 0; }
+
+/* figure */
+figure { margin: 0; }
+figure.wide { margin-top: 2.4rem; border: 1px solid var(--rule); padding: 1.4rem; }
+figcaption { font-family: var(--display); font-size: 0.82rem; color: var(--ink-3); margin-top: 0.8rem; max-width: 70ch; }
+.diagram { width: 100%; height: auto; display: block; }
+.diagram text { font-family: var(--display); }
+@media (max-width: 760px) { figure.wide { overflow-x: auto; padding: 1rem; } .diagram { min-width: 720px; } figcaption { position: sticky; left: 0; } }
+
+/* research */
+.studies { border-top: 1px solid var(--rule-2); margin-top: 2rem; }
+.study { display: grid; grid-template-columns: 1fr; gap: 0.5rem 3rem; padding: 1.6rem 0; border-bottom: 1px solid var(--rule); }
+@media (min-width: 900px) { .study { grid-template-columns: 1fr 1.4fr; } }
+.study h3 { font-size: 1.35rem; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
+.study .q { font-style: italic; color: var(--ink-2); font-size: 1.02rem; margin: 0; }
+.study .a { font-size: 0.98rem; color: var(--ink-2); margin: 0; }
+.study .a p:last-child { margin: 0; }
+.papers { margin-top: 2.6rem; }
+.papers h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+.paper { display: grid; grid-template-columns: 1fr auto; gap: 0.6rem 1.5rem; padding: 0.9rem 0; border-top: 1px solid var(--rule); align-items: start; }
+.paper:last-child { border-bottom: 1px solid var(--rule); }
+.paper .t { font-size: 0.98rem; }
+.paper .t a { text-decoration-color: var(--rule); }
+.paper .m { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); font-weight: 700; white-space: nowrap; padding-top: 0.25rem; }
+.paper .sm { display: block; font-size: 0.85rem; color: var(--ink-3); margin-top: 0.2rem; }
+.inline-list { margin: 0; padding: 0; list-style: none; font-size: 0.95rem; color: var(--ink-2); }
+.inline-list li { padding: 0.55rem 0; border-top: 1px solid var(--rule); }
+.inline-list li:last-child { border-bottom: 1px solid var(--rule); }
+.two { display: grid; grid-template-columns: 1fr; gap: 2.5rem 3rem; margin-top: 2.6rem; }
+@media (min-width: 900px) { .two { grid-template-columns: 1fr 1fr; } }
+.two h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+
+/* cases */
+.group { margin-top: 3rem; }
+.group:first-of-type { margin-top: 2rem; }
+.group-head { display: grid; grid-template-columns: 1fr; gap: 0.6rem 3rem; align-items: end; padding-bottom: 1rem; border-bottom: 1px solid var(--rule-2); }
+@media (min-width: 900px) { .group-head { grid-template-columns: 1fr 1.4fr; } }
+.group-head h3 { font-size: clamp(1.8rem, 3.4vw, 2.8rem); letter-spacing: -0.035em; }
+.group-head h3 span { color: var(--green); }
+.group-head p { margin: 0; color: var(--ink-2); font-size: 1rem; max-width: 60ch; }
+.case { display: grid; grid-template-columns: 1fr; gap: 0.7rem 3rem; padding: 1.8rem 0; border-bottom: 1px solid var(--rule); }
+@media (min-width: 900px) { .case { grid-template-columns: 1fr 1.4fr; } .case .right { padding-top: 0.35rem; } }
+.case .k { display: block; margin-bottom: 0.7rem; }
+.case h3 { font-size: clamp(1.35rem, 2vw, 1.7rem); letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 0.9rem; max-width: 20ch; }
+.yes { display: inline-flex; align-items: baseline; gap: 0.45rem; font-family: var(--display); font-size: 0.82rem; font-weight: 600; color: var(--ink); background: var(--paper-2); border-radius: 999px; padding: 0.4rem 0.8rem 0.42rem; }
+.yes b { color: var(--green); font-weight: 700; }
+.case .right p { font-size: 1rem; color: var(--ink-2); margin-bottom: 0.7rem; }
+.case .right p:last-of-type { margin-bottom: 0.9rem; }
+.src { display: flex; gap: 1.2rem; flex-wrap: wrap; font-family: var(--display); font-size: 0.8rem; color: var(--ink-3); }
+.src i { font-family: var(--body); font-style: italic; }
+.src a { color: var(--green); font-weight: 600; text-decoration: none; }
+.src a:hover { text-decoration: underline; }
+.case .more { font-family: var(--display); font-size: 0.82rem; font-weight: 600; color: var(--green); background: none; border: 0; padding: 0; margin-top: 0.9rem; cursor: pointer; display: none; align-items: center; gap: 0.4rem; }
+.case .more::after { content: "+"; font-size: 1.1rem; line-height: 1; }
+.js .case .more { display: inline-flex; }
+.js .case:not(.open) .right { display: none; }
+.js .case.open .more::after { content: "\2013"; }
+.cases-tools { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.2rem; font-family: var(--display); font-size: 0.82rem; font-weight: 600; }
+.cases-tools button { background: none; border: 0; padding: 0; color: var(--ink-3); cursor: pointer; font: inherit; }
+.cases-tools button:hover { color: var(--green); }
+.js .cases-tools { display: flex; } .cases-tools { display: none; }
+
+/* agents panel */
+.agents { background: var(--green-deep); color: #eaf3ef; }
+.agents .k { color: #9fd6c2; }
+.agents h2 { color: #fff; }
+.agents .lead { color: #cfe4db; }
+.agents .panel { display: grid; grid-template-columns: 1fr; gap: 2rem 3rem; margin-top: 2rem; }
+@media (min-width: 900px) { .agents .panel { grid-template-columns: 1.1fr 1fr; } }
+.agents .btn { background: #fff; color: var(--green-deep); }
+.agents .btn:hover { background: #d9efe6; color: var(--green-deep); }
+.agents .btn.o { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
+.agents .btn.o:hover { border-color: #fff; }
+.agents .actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.2rem; align-items: center; }
+.agents .status { font-family: var(--display); font-size: 0.85rem; color: #9fd6c2; min-height: 1.2em; }
+.prompts { list-style: none; margin: 0; padding: 0; }
+.prompts li { border-top: 1px solid rgba(255,255,255,0.18); padding: 0.9rem 0; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; font-size: 0.98rem; }
+.prompts li:last-child { border-bottom: 1px solid rgba(255,255,255,0.18); }
+.prompts button { font-family: var(--display); font-size: 0.78rem; font-weight: 600; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.5); border-radius: 999px; padding: 0.35rem 0.75rem; cursor: pointer; white-space: nowrap; }
+.prompts button:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+.agents code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.85em; background: rgba(255,255,255,0.1); padding: 0.1rem 0.4rem; border-radius: 3px; }
+
+/* now */
+.now { list-style: none; margin: 2rem 0 0; padding: 0; border-top: 1px solid var(--rule-2); }
+.now li { display: grid; grid-template-columns: 1fr; gap: 0.3rem 3rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); }
+@media (min-width: 760px) { .now li { grid-template-columns: 1fr 1.4fr; } }
+.now h3 { font-size: 1.15rem; letter-spacing: -0.02em; }
+.now p { margin: 0; color: var(--ink-2); font-size: 0.98rem; }
+
+/* record */
+details.record { border-top: 1px solid var(--rule-2); border-bottom: 1px solid var(--rule); }
+details.record summary { cursor: pointer; list-style: none; padding: 1.2rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-family: var(--display); font-weight: 700; font-size: 1.05rem; }
+details.record summary::-webkit-details-marker { display: none; }
+details.record summary::after { content: "+"; font-size: 1.5rem; font-weight: 300; color: var(--green); }
+details.record[open] summary::after { content: "\2013"; }
+details.record dl { display: grid; grid-template-columns: 1fr; gap: 0.9rem 2rem; margin: 0; padding: 0.2rem 0 1.6rem; }
+@media (min-width: 760px) { details.record dl { grid-template-columns: 10rem 1fr; } }
+details.record dd { margin: 0; color: var(--ink-2); font-size: 0.95rem; max-width: 80ch; }
+
+/* contact */
+.contact .grid { display: grid; grid-template-columns: 1fr; gap: 2rem 3rem; margin-top: 1.5rem; }
+@media (min-width: 760px) { .contact .grid { grid-template-columns: 1.4fr 1fr; } }
+.contact .big { font-family: var(--display); font-size: clamp(1.6rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.04em; text-decoration: none; color: var(--ink); border-bottom: 3px solid var(--green); }
+.contact .big:hover { color: var(--green); }
+.links { list-style: none; margin: 0; padding: 0; font-family: var(--display); font-size: 0.95rem; font-weight: 600; }
+.links li { padding: 0.55rem 0; border-top: 1px solid var(--rule); }
+.links li:last-child { border-bottom: 1px solid var(--rule); }
+.links a { text-decoration: none; color: var(--ink-2); }
+footer { padding: 2rem 0 3rem; font-family: var(--display); font-size: 0.82rem; color: var(--ink-3); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--rule); }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Site">
+  <div class="wrap">
+    <a class="brand" href="#top">Atharva Sabnis</a>
+    <ul>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#agents">For agents</a></li>
+      <li><a href="#contact">Hello</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow k"><span>Dubai</span><span>Independent researcher</span><span>Adoption in regulated markets</span></div>
+    <h1>I study how new technology gets past the people who have to <em>say yes</em> first.</h1>
+    <div class="below">
+      <div class="gutter"><span class="k g">A note</span></div>
+      <div class="lede">
+        <p>For most of my working life I was the one trying to get it past them: a QA head at a pharma plant, a taxi union, a hotel chain's housekeeping director, a bank's compliance desk, an exchange's legal team. The technology changed every time. The conversation did not.</p>
+        <p>These days the first person asked is often not a person. Someone types a question about a city's rules or its businesses into an AI assistant, and that answer lands before any human's does. I have started measuring how good it is. This page is where the notes live.</p>
+        <div class="actions">
+          <a class="btn g" href="#research">Start with the research</a>
+          <a class="btn o" href="#cases">Or the stories</a>
+        </div>
+      </div>
+      <div class="portrait" aria-label="Portrait placeholder">
+        <svg viewBox="0 0 400 500" aria-hidden="true">
+          <rect width="400" height="500" fill="#f3f5f4"/>
+          <g stroke="#0a6b4f" stroke-width="1.2" fill="none" opacity="0.55">
+            <line x1="40" y1="60" x2="40" y2="440"/>
+            <line x1="40" y1="440" x2="360" y2="440"/>
+            <path d="M40 440 C120 420 160 300 220 260 S330 170 360 90"/>
+            <circle cx="220" cy="260" r="4" fill="#0a6b4f"/>
+            <circle cx="360" cy="90" r="4" fill="#0a6b4f"/>
+          </g>
+        </svg>
+        <span class="cap k">Portrait to follow</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="s" id="approach">
+  <div class="wrap row">
+    <div class="gutter"><div class="stick"><span class="num">01</span><span class="k">Approach</span></div></div>
+    <div>
+      <h2>Where new technology actually stalls</h2>
+      <p class="lead">Not at the frontier. At the first conversation with someone whose job is to say no, and who will be blamed if the new thing fails. Every case on this page was won or lost in that room. The research asks what happens now that the room has a machine in it.</p>
+
+      <figure class="wide">
+        <svg class="diagram" viewBox="0 0 1000 300" role="img" aria-label="Diagram: between demo and deployment sits a gatekeeper who must be given a document to sign and a story to carry upward">
+          <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0b0d0c"/></marker></defs>
+          <g font-size="13" fill="#7a807d" font-weight="700" letter-spacing="1.5">
+            <text x="60" y="40">DEMO</text>
+            <text x="440" y="40">THE FIRST CONVERSATION</text>
+            <text x="840" y="40">DEPLOYMENT</text>
+          </g>
+          <rect x="60" y="70" width="200" height="90" fill="#f3f5f4"/>
+          <text x="80" y="108" font-size="16" fill="#0b0d0c" font-weight="700">It works.</text>
+          <text x="80" y="134" font-size="13" fill="#3f4543">Lab, pilot, prototype</text>
+          <line x1="260" y1="115" x2="412" y2="115" stroke="#0b0d0c" stroke-width="1.5" marker-end="url(#ar)"/>
+          <rect x="430" y="60" width="280" height="180" fill="none" stroke="#0a6b4f" stroke-width="2"/>
+          <text x="450" y="100" font-size="16" fill="#0a6b4f" font-weight="800">Someone who can say no</text>
+          <text x="450" y="124" font-size="13" fill="#3f4543">QA head · union secretary · compliance</text>
+          <text x="450" y="142" font-size="13" fill="#3f4543">housekeeping director · exchange legal</text>
+          <line x1="450" y1="162" x2="690" y2="162" stroke="#e2e6e4"/>
+          <text x="450" y="188" font-size="13" fill="#0b0d0c" font-weight="700">Needs 1. a document they can sign</text>
+          <text x="450" y="210" font-size="13" fill="#0b0d0c" font-weight="700">Needs 2. a story they can carry upward</text>
+          <line x1="710" y1="115" x2="812" y2="115" stroke="#0b0d0c" stroke-width="1.5" marker-end="url(#ar)"/>
+          <rect x="830" y="70" width="160" height="90" fill="#0a6b4f"/>
+          <text x="848" y="108" font-size="16" fill="#fff" font-weight="700">In use.</text>
+          <text x="848" y="134" font-size="13" fill="#d9efe6">SOP, roof, screen</text>
+          <path d="M570 240 L570 275" stroke="#0a6b4f" stroke-width="1.5" stroke-dasharray="3 4"/>
+          <text x="570" y="294" font-size="12" fill="#0a6b4f" text-anchor="middle" font-weight="700">THE NEW ONE IS AN ANSWER ENGINE</text>
+        </svg>
+        <figcaption>The pattern across eleven cases. The technology differed every time; the shape of the problem did not.</figcaption>
+      </figure>
+
+      <div class="three">
+        <div>
+          <span class="k g">What I noticed</span>
+          <h3>The yes was never about the technology</h3>
+          <p>Pharma lines, hotel rooms, taxi roofs, school loans, bank documents, smelters, football stadiums, a crypto exchange. Each time I kept a note of what moved it: which document, which person, which incentive. Those notes became the eleven stories further down.</p>
+        </div>
+        <div>
+          <span class="k g">How I check things</span>
+          <h3>Slowly, and more than once</h3>
+          <p>Designs preregistered with the materials frozen. Runs repeated in fresh sessions, because one answer from a language model is an anecdote. Each figure traced to its source in the same pass that writes it. Raw captures kept. Habits picked up in pharma validation and bank sandboxes, where a claim without a record is not a claim.</p>
+        </div>
+        <div>
+          <span class="k g">Where I'm looking</span>
+          <h3>The UAE's rules, and what machines say about them</h3>
+          <p>I live under VARA, DIFC, ADGM and free-zone rules as someone who has set up and run companies here, so I notice when ChatGPT, Gemini or DeepSeek describe them wrongly to a founder who is about to act on it. That gap turned into the research.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="research">
+  <div class="wrap row">
+    <div class="gutter"><div class="stick"><span class="num">02</span><span class="k">Research</span></div></div>
+    <div>
+      <h2>What AI systems tell people about a city</h2>
+      <p class="lead">Dubai is the test case. Its rules are precise and recent, it is asked about from everywhere, and its ambitions depend on being described correctly. The protocol is built so that anyone can rerun it.</p>
+
+      <div class="studies">
+        <div class="study">
+          <div>
+            <span class="k g">Line one</span>
+            <h3>Answer integrity</h3>
+            <p class="q">A founder in London, Mumbai or Shenzhen asks an assistant whether free-zone income is taxed, what a golden visa requires, whether a platform holds a VARA licence. How often is the answer wrong, in which language, on which engine, and does it stay wrong?</p>
+          </div>
+          <div class="a">
+            <p>Real-intent questions, asked in fresh sessions and repeated per engine and per language. An answer counts only when it recurs; a two-of-three rule governs confirmation. Every answer is scored against the current rule and its effective date, and the raw captures are archived.</p>
+            <p>The engines mostly agree on the headline and diverge on the elaboration, which is the part a reader acts on. A second paper asks how much the grading itself moves with instructions and reruns. A third study, preregistered, asks whether the same engine gives the same answer weeks later.</p>
+          </div>
+        </div>
+        <div class="study">
+          <div>
+            <span class="k g">Line two</span>
+            <h3>Buyer-agent qualification</h3>
+            <p class="q">An overseas buyer's assistant goes looking for a Dubai supplier. Does it get past a list of names to a decision it could defend: the right legal entity, the exact offering, evidence that applies to it, current terms, a way to ask?</p>
+          </div>
+          <div class="a">
+            <p>In captured sessions, a public assistant asked to find suppliers for a specified packaging order returns plausible candidates and then, correctly, declines to qualify any of them from public evidence. Registration, product-specific certification and dispatch terms come back unresolved.</p>
+            <p>The open question is what owner-authorised evidence would turn that list into a reviewable decision, and whether buyers would use it. The work in progress tests both.</p>
+          </div>
+        </div>
+        <div class="study">
+          <div>
+            <span class="k g">Book</span>
+            <h3>Relevance engineering</h3>
+            <p class="q">If the buyer asks an assistant before they search, how does a business make itself the answer, and prove to a machine that checks what it can deliver?</p>
+          </div>
+          <div class="a">
+            <p>A practitioner's book on generative engine optimisation for the owner of a business rather than for an agency, drawing on both research lines. Publication details will appear here.</p>
+          </div>
+        </div>
+      </div>
+
+      <figure class="wide">
+        <svg class="diagram" viewBox="0 0 1000 260" role="img" aria-label="Diagram of the audit protocol: questions, fresh sessions across three engines in two languages, repeated runs, confirmation, scoring against sources, archive">
+          <g font-size="12" fill="#7a807d" font-weight="700" letter-spacing="1.5">
+            <text x="40" y="34">QUESTIONS</text><text x="250" y="34">ENGINES</text><text x="470" y="34">RUNS</text><text x="660" y="34">CONFIRM</text><text x="820" y="34">SCORE</text>
+          </g>
+          <rect x="40" y="60" width="160" height="120" fill="#f3f5f4"/>
+          <text x="56" y="92" font-size="14" fill="#0b0d0c" font-weight="700">Real intent</text>
+          <text x="56" y="114" font-size="12" fill="#3f4543">tax · visas · licensing</text>
+          <text x="56" y="132" font-size="12" fill="#3f4543">Arabic and English</text>
+          <g fill="#fff" stroke="#0a6b4f" stroke-width="1.5">
+            <rect x="250" y="56" width="160" height="34"/><rect x="250" y="103" width="160" height="34"/><rect x="250" y="150" width="160" height="34"/>
+          </g>
+          <g font-size="12" fill="#0b0d0c" font-weight="700">
+            <text x="264" y="78">ChatGPT</text><text x="264" y="125">Gemini</text><text x="264" y="172">DeepSeek</text>
+          </g>
+          <g stroke="#0b0d0c" stroke-width="1.2" fill="none">
+            <path d="M200 120 L250 73"/><path d="M200 120 L250 120"/><path d="M200 120 L250 167"/>
+          </g>
+          <g fill="#0a6b4f">
+            <circle cx="490" cy="73" r="6"/><circle cx="512" cy="73" r="6"/><circle cx="534" cy="73" r="6"/>
+            <circle cx="490" cy="120" r="6"/><circle cx="512" cy="120" r="6"/><circle cx="534" cy="120" r="6"/>
+            <circle cx="490" cy="167" r="6"/><circle cx="512" cy="167" r="6"/><circle cx="534" cy="167" r="6"/>
+          </g>
+          <g stroke="#0b0d0c" stroke-width="1.2"><line x1="410" y1="73" x2="480" y2="73"/><line x1="410" y1="120" x2="480" y2="120"/><line x1="410" y1="167" x2="480" y2="167"/></g>
+          <text x="470" y="206" font-size="12" fill="#3f4543">fresh session, each run</text>
+          <rect x="660" y="90" width="130" height="60" fill="none" stroke="#0a6b4f" stroke-width="2"/>
+          <text x="676" y="116" font-size="14" fill="#0a6b4f" font-weight="800">2 of 3</text>
+          <text x="676" y="136" font-size="12" fill="#3f4543">before it counts</text>
+          <g stroke="#0b0d0c" stroke-width="1.2" fill="none"><path d="M545 73 L660 112"/><path d="M545 120 L660 120"/><path d="M545 167 L660 128"/></g>
+          <rect x="820" y="60" width="175" height="120" fill="#0a6b4f"/>
+          <text x="836" y="92" font-size="14" fill="#fff" font-weight="700">Against the rule</text>
+          <text x="836" y="114" font-size="12" fill="#d9efe6">VARA · CMA · CBUAE</text>
+          <text x="836" y="132" font-size="12" fill="#d9efe6">with effective date</text>
+          <text x="836" y="162" font-size="12" fill="#fff" font-weight="700">Raw captures archived</text>
+          <line x1="790" y1="120" x2="820" y2="120" stroke="#0b0d0c" stroke-width="1.2"/>
+          <text x="40" y="240" font-size="12" fill="#0a6b4f" font-weight="700">THE SAME PROTOCOL IS PREREGISTERED FOR THE REPEATABILITY STUDY, MATERIALS FROZEN AND HASHED BEFORE COLLECTION</text>
+        </svg>
+        <figcaption>The audit protocol. A single run of a language model proves nothing, so none is used alone.</figcaption>
+      </figure>
+
+      <div class="two">
+        <div>
+          <h3>Selected papers</h3>
+          <div class="paper"><div class="t"><a href="https://papers.ssrn.com/abstract=7648478">Core-answer agreement and elaboration uncertainty in AI answers on UAE virtual-asset regulation: a pilot audit of three consumer engines</a></div><div class="m">SSRN</div></div>
+          <div class="paper"><div class="t">Instruction and run sensitivity in AI grading of regulatory answers<span class="sm">Dataset: doi:10.6084/m9.figshare.34735080</span></div><div class="m">Submitted</div></div>
+          <div class="paper"><div class="t"><a href="https://osf.io/a3jk5">Engine repeatability and drift on UAE virtual-asset questions</a><span class="sm">Preregistered; collection under way</span></div><div class="m">OSF</div></div>
+          <div class="paper"><div class="t">Three of a continuing series on answer integrity and buyer-agent qualification.<span class="sm">The full list is on the SSRN author page.</span></div><div class="m"><a href="https://papers.ssrn.com/abstract=7648478" style="color:inherit;text-decoration:none">SSRN</a></div></div>
+          <div class="papers">
+            <h3>Patent applications in progress</h3>
+            <ul class="inline-list">
+              <li>A staleness detector for AI-generated competitive battlecards, flagging claims that no longer match their sources.</li>
+              <li>A go-to-market motion selector that picks the sales motion from buyer profile, deal size and evidence base.</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h3>In the press</h3>
+          <ul class="inline-list">
+            <li><a href="https://www.lokmattimes.com/technology/83-takes-the-nft-highway-to-drop-collection-on-december-23/amp">'83 takes the NFT highway</a>, IANS</li>
+            <li><a href="https://business-standard.com/amp/article/technology/nfts-of-ranveer-singh-starrer-cricket-movie-83-hit-collectibles-market-122011200587_1.html">NFTs of '83 hit the collectibles market</a>, Business Standard</li>
+            <li><a href="https://aap.com.au/aapreleases/cision20240626ae43361/">Fractal announces merger of Eugenie.ai</a>, PR Newswire</li>
+            <li><a href="https://yourstory.com/2024/01/eugenieai-helping-manufacturing-firms-reduce-carbon-emissions">Eugenie.ai is helping manufacturers cut emissions</a>, YourStory</li>
+            <li><a href="https://coindcx.com/blog/product-updates/expert-picks">Introducing Expert Picks by MarketWind</a>, CoinDCX</li>
+            <li><a href="https://www.magzter.com/fr/stories/Business/DataQuest/Becoming-An-Atron-Franchisee-Is-A-Rigorous-But-Valuable-Process">Becoming an Atron franchisee</a>, DataQuest</li>
+            <li><a href="https://blockchain.ieee.org/conferences/2024-ieee-india-pune-bc-symposium">IEEE India Blockchain Symposium</a>, speaker</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="cases">
+  <div class="wrap row">
+    <div class="gutter"><div class="stick"><span class="num">03</span><span class="k">The eleven cases</span></div></div>
+    <div>
+      <h2>Who had to say yes, and what it took</h2>
+      <p class="lead">Eleven stories, grouped by who had to say yes. The companies are in small type underneath; they matter less than the person who signed.</p>
+      <div class="cases-tools"><button type="button" id="openAll">Open all</button><button type="button" id="closeAll">Close all</button></div>
+
+      <div class="group">
+        <div class="group-head">
+          <h3>The <span>rulebook</span></h3>
+          <p>Regulators, validators, the written standard. Nothing moves until the new method is in a document someone else is allowed to sign.</p>
+        </div>
+
+        <article class="case">
+          <div>
+            <span class="k">01 · Pharma manufacturing, India</span>
+            <h3>Dry steam written into pharma sanitisation SOPs</h3>
+            <div class="yes">Yes from <b>QA heads, then the Indian FDA</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>Chemical cleaning cycles at batch changeover took hours and left residue to test for. Super-heated dry steam did it faster with nothing to rinse. The physics was never the problem; a method that is not in the SOP does not exist in a validated plant.</p>
+            <p>So the work was the document: validation protocols QA could defend, then the regulator. The method entered Indian FDA recommended pharma workflows and ran on production lines at pharma manufacturers and at Delta Corp.</p>
+            <div class="src"><i>Atron Digital</i><a href="https://www.pressreader.com/india/pcquest/20190601/282003263948462">PCQuest</a></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <span class="k">02 · Banking, Europe and the Gulf</span>
+            <h3>Document-reading AI in front of banks, through a sandbox</h3>
+            <div class="yes">Yes from <b>bank risk and compliance</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>Software that reads KYC files, salary slips and bank statements into data a credit system can use. Banks do not trial unproven AI on customer documents, however good the demo.</p>
+            <p>The route in was supervised testing inside a regulatory sandbox before any bank was asked to adopt. The company passed through EY Foundry and DIFC FinTech Hive on the way, and the same engine went on to read loan pools for structured finance.</p>
+            <div class="src"><i>IN-D.ai</i></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <span class="k">03 · UAE regulation</span>
+            <h3>The first systematic audit of AI answers on UAE virtual-asset rules</h3>
+            <div class="yes">Yes from <b>peer and regulator scrutiny</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>Twenty-five questions a real founder or investor would ask, put to three engines in fresh sessions and scored against VARA, CMA and CBUAE sources. Agreement on the headline, divergence on the detail people act on.</p>
+            <p>Published as a working paper, with a second on the grading itself and a third preregistered on repeatability, because an audit that cannot be rerun is an opinion.</p>
+            <div class="src"><i>Working paper</i><a href="https://papers.ssrn.com/abstract=7648478">SSRN</a></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="group">
+        <div class="group-head">
+          <h3>The <span>street</span></h3>
+          <p>Drivers, a union, film studios, football fans. No procurement, no compliance desk, and a harder audience: people who have to want the thing.</p>
+        </div>
+
+        <article class="case">
+          <div>
+            <span class="k">04 · Ride-hailing, India</span>
+            <h3>India's first in-taxi infotainment platform</h3>
+            <div class="yes">Yes from <b>fleet operators and drivers</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>Uber and Ola were new to India and Meru still set the standard. Nobody had put a screen in a cab. A driver had to accept a device in his car, a fleet a partner on its seats, an advertiser a bet that anyone would look. The build was the placement economics, not the screen.</p>
+            <p>Ola launched Ola Play the following year and Uber followed with its own in-cab system. The category became a feature of the two largest players.</p>
+            <div class="src"><i>Fractal Media</i><a href="https://techwireasia.com/11/2016/ola-india-entertainment-system-appeal-passengers/">Ola Play launch coverage</a></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <span class="k">05 · Mumbai's black-and-yellow taxis</span>
+            <h3>Five-direction signage on the roofs of kaali-peeli taxis</h3>
+            <div class="yes">Yes from <b>Swabhimaan Taxi Union</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>The most photographed vehicle in Mumbai had never carried a brand. A modular luggage carrier was rebuilt as a roof unit readable from five directions. The hardware took weeks; the permission took longer.</p>
+            <p>A union speaks for thousands of owner-drivers who distrust anything bolted to their cars by an outsider. The deal paid drivers directly, survived transport-authority scrutiny and carried the union's endorsement before the first carrier went up.</p>
+            <div class="src"><i>Fractal Media</i></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <span class="k">06 · Bollywood and football</span>
+            <h3>Licensed collectibles for fans who had never owned one</h3>
+            <div class="yes">Yes from <b>studios, clubs and leagues</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>No Indian studio had licensed a digital collectible and almost no Indian fan had a wallet. Education came before product: explain the asset to rights holders in their own terms, then build a claim flow that works in under a minute with no wallet and no jargon.</p>
+            <p>Technology partner, with Social Swag, on the first official NFT drop for a mainstream Bollywood film, Reliance Entertainment's '83, which sold out within its first hour to buyers from Jabalpur to Solapur as much as the metros. Then a run of sports activations with clubs and leagues, among them the collectibles for 30,000 fans at Tottenham Hotspur against AS Roma, chosen by HYPE Sports Innovation.</p>
+            <div class="src"><i>NFT Labs, ITSMYNE</i><a href="https://www.lokmattimes.com/technology/83-takes-the-nft-highway-to-drop-collection-on-december-23/amp">IANS</a><a href="https://markets.financialcontent.com/pennwell.industriallaser/article/einpresswire-2022-7-30-itsmyne-by-nft-labs-confirmed-for-nft-implementation-at-i-tech-cup-game-between-tottenham-hotspur-fc-and-as-roma">I-Tech Cup release</a></div>
+          </div>
+        </article>
+      </div>
+    <div class="group">
+        <div class="group-head">
+          <h3>The <span>institution</span></h3>
+          <p>Hotel chains, heavy industry, lenders, exchanges. They do not buy from strangers or from startups through procurement. Someone inside has to carry it.</p>
+        </div>
+
+        <article class="case">
+          <div>
+            <span class="k">07 · Luxury hotels, Goa</span>
+            <h3>The Pure Room standard at Taj hotels</h3>
+            <div class="yes">Yes from <b>Taj housekeeping and Diversey compliance</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>The same dry-steam equipment, turned on guest rooms: a chemical-free pass after deep cleaning and before check-in, inside the Diversey hygiene framework the hotels already answered to. A hotel changes its housekeeping standard roughly never.</p>
+            <p>Piloted at Taj properties, then rolled out across Taj North Goa, whose GM described rooms sanitised to the level of a pharmaceutical clean room.</p>
+            <div class="src"><i>Atron Digital</i><a href="https://magzter.com/stories/Business/Express-Food-Hospitality/Pure-Room-Sanitising-Technology">Express Food &amp; Hospitality</a></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <span class="k">08 · Heavy industry, India, the Gulf, the US</span>
+            <h3>An emissions platform from cold start to Google I/O, the UN Global Compact and Gartner</h3>
+            <div class="yes">Yes from <b>innovation teams inside legacy industrials</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>A smelter does not buy AI from a startup. It lets an innovation team run a paid pilot on one line, and if the line behaves, the plant follows. Become the name that team already knows, land the pilot, prove it on one process, expand. That is how Nexa Resources and Hindustan Zinc came in, how a predictive-maintenance pilot ran with Saudi Aramco and a fault-prediction trial at a Jabil plant in the US.</p>
+            <p>Alongside, the standing a climate-tech company needs: UN Global Compact participation, the Google for Startups Climate Change accelerator, a feature at Google I/O, Blue Zone sessions at COP27 and COP28, two Gartner Magic Quadrant inclusions, reporting built to GHG Protocol, SBTi, TCFD, GRI and CDP.</p>
+            <div class="src"><i>Eugenie.ai</i><a href="https://aap.com.au/aapreleases/cision20240626ae43361/">Fractal release</a></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <span class="k">09 · School finance, India</span>
+            <h3>A school loan priced in the principal's office</h3>
+            <div class="yes">Yes from <b>a credit committee and a field sales force</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>A lender to schools had a slow loop: papers collected, assessed at head office, weeks lost, principal gone cold. A web app took a fee book and enrolment numbers and returned a readiness score and an eligible amount on the spot.</p>
+            <p>Credit policy had to trust a field tool with its rules; the field team had to trust a screen over instinct. Both did. Principals got an answer in the same meeting.</p>
+            <div class="src"><i>Versura Shiksha</i></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <span class="k">10 · Crypto derivatives, India</span>
+            <h3>An outside signals desk inside CoinDCX's own trading screen</h3>
+            <div class="yes">Yes from <b>exchange product, legal and compliance</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>Trading signals live on Telegram, where nobody vouches for them. Getting third-party research into a regulated exchange's interface, next to the order button, means product wanting it, legal clearing it and compliance living with what it implies.</p>
+            <p>Expert Picks by MarketWind launched inside CoinDCX Futures with daily swing calls on BTC, ETH and SOL: an outside research desk sitting in the exchange's own screen, where the exchange answers for it.</p>
+            <div class="src"><i>Marketwind Services</i><a href="https://coindcx.com/blog/product-updates/expert-picks">CoinDCX</a></div>
+          </div>
+        </article>
+      </div>
+
+      <article class="case">
+          <div>
+            <span class="k">11 · Cement plants, India</span>
+            <h3>Drones as a normal inspection tool inside cement plants</h3>
+            <div class="yes">Yes from <b>plant heads and safety officers</b></div>
+            <button class="more" type="button" aria-expanded="false">Read the story</button>
+          </div>
+          <div class="right">
+            <p>Inspecting a silo or a preheater cyclone meant scaffolding, a confined-space permit and days of lost production. A caged drone did it in an afternoon, once a plant head believed the images and a safety officer could sign off on a method the industry had never used.</p>
+            <p>At one plant, 64 cyclones in three days; six needed repair, and scaffolding went up for those six only. Clients included ACC, Ambuja Cement and Adani. A push for the Ministry of Civil Aviation to recognise the method drew attention and no rule change; the plants adopted it regardless.</p>
+            <div class="src"><i>Industrial inspection, co-founder</i></div>
+          </div>
+        </article>
+
+        </div>
+  </div>
+</section>
+
+<section class="s" id="speaking">
+  <div class="wrap row">
+    <div class="gutter"><div class="stick"><span class="num">04</span><span class="k">Speaking</span></div></div>
+    <div>
+      <h2>On stage and on air</h2>
+      <p class="lead">The same stories, told out loud: how technology gets adopted, emissions intelligence for heavy industry, digital assets for people who had never held one, and what AI engines get wrong about the rules.</p>
+      <ul class="now">
+        <li><h3>IEEE India Blockchain Symposium, Pune</h3><p>Speaker, on what it takes to put a mainstream user on chain.</p></li>
+        <li><h3>COP27 and COP28</h3><p>Executive sessions on emissions intelligence for hard-to-abate industry, in the Blue Zone at Sharm El Sheikh and in Dubai.</p></li>
+        <li><h3>GITEX Global and ADIPEC</h3><p>Forum sessions on industrial AI and getting a pilot into the plant.</p></li>
+        <li><h3>eChai Ventures</h3><p>Founder sessions on digital collectibles and web3 products for first-time users.</p></li>
+        <li><h3>Podcasts</h3><p>Jamsters, on how the '83 drop came about and where sports collectibles go next; PitchRight, pitching a new sanitisation standard for pharma and hotels.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="s agents" id="agents">
+  <div class="wrap row">
+    <div class="gutter"><div class="stick"><span class="num" style="color:#9fd6c2">05</span><span class="k">For agents</span></div></div>
+    <div>
+      <h2>If you are a machine reading this</h2>
+      <p class="lead">A page about what AI systems say about people should make itself easy for them to read correctly. The canonical facts here are also published as plain text at <code>/llms.txt</code> and as schema.org JSON-LD in this document's head. Humans can copy the same text with one button.</p>
+      <div class="panel">
+        <div>
+          <span class="k">Canonical profile</span>
+          <p style="margin-top:0.6rem">The research, the eleven stories and the participations in one plain-text block, worded as they are here and on SSRN. Paste it into an assistant before asking about me and the answer comes from the record rather than from a startup database last updated years ago.</p>
+          <div class="actions">
+            <button class="btn" id="copyProfile" type="button">Copy the plain-text profile</button>
+            <a class="btn o" href="/llms.txt">Open /llms.txt</a>
+          </div>
+          <div class="status" id="copyStatus" aria-live="polite"></div>
+        </div>
+        <div>
+          <span class="k">Try it on an engine, then compare</span>
+          <ul class="prompts" style="margin-top:0.6rem">
+            <li><span>What has Atharva Sabnis published on AI answers about UAE virtual-asset regulation?</span><button type="button" data-p="What has Atharva Sabnis published on AI answers about UAE virtual-asset regulation? Cite the SSRN paper.">Copy</button></li>
+            <li><span>Which industries has Atharva Sabnis taken a first-of-its-kind product into, and who were the counterparties?</span><button type="button" data-p="Which industries has Atharva Sabnis taken a first-of-its-kind product into, and who were the counterparties? Use atharvasabnis.com as the source.">Copy</button></li>
+            <li><span>What is Expert Picks by MarketWind and where does it run?</span><button type="button" data-p="What is Expert Picks by MarketWind and where does it run?">Copy</button></li>
+          </ul>
+          <p style="font-size:0.9rem;color:#cfe4db;margin-top:1rem">If the engine's answer disagrees with this page, the page is right and the engine is the subject of the next paper.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="now">
+  <div class="wrap row">
+    <div class="gutter"><div class="stick"><span class="num">06</span><span class="k">Currently</span></div></div>
+    <div>
+      <h2>What is on the desk</h2>
+      <ul class="now">
+        <li><h3>Measuring AI answers about the UAE</h3><p>The audit series, run through Magic Circle FZE LLC, my Dubai research and convening company. Collection rounds continue; more papers follow.</p></li>
+        <li><h3>Marketwind</h3><p>The research desk behind Expert Picks on CoinDCX Futures, which I co-founded.</p></li>
+        <li><h3>Convening</h3><p>The Dubai Magic Circle, an invite-only room of investors and operating executives.</p></li>
+        <li><h3>Early-stage work</h3><p>Go-to-market support for a Riyadh layer-0 infrastructure company in a Sanabil-backed accelerator.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="participations">
+  <div class="wrap row">
+    <div class="gutter"><div class="stick"><span class="num">07</span><span class="k">Participations</span></div></div>
+    <div>
+      <h2>Rooms where the rules for agents are being written</h2>
+      <ul class="now">
+        <li><h3>IEEE P1968</h3><p>Participant, working group on the governance of autonomous AI agent systems.</p></li>
+        <li><h3>W3C</h3><p>Member, AI Agent Protocol Community Group.</p></li>
+        <li><h3>OWASP</h3><p>Contributor, GenAI Security Project, Agentic Security Initiative.</p></li>
+        <li><h3>Cloud Security Alliance</h3><p>Contributor, AI Safety Working Group.</p></li>
+        <li><h3>OpenID Foundation</h3><p>Member, AI Identity Management Community Group.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="s contact" id="contact">
+  <div class="wrap row">
+    <div class="gutter"><div class="stick"><span class="num">08</span><span class="k">Hello</span></div></div>
+    <div>
+      <h2>Say hello</h2>
+      <div class="grid">
+        <div>
+          <p class="lead" style="margin-bottom:1.4rem">If any of this touches something you are working on, write. I read everything and answer most of it. Dubai, usually.</p>
+          <a class="big" href="mailto:hello@atharvasabnis.com">hello@atharvasabnis.com</a>
+        </div>
+        <ul class="links">
+          <li><a href="https://papers.ssrn.com/abstract=7648478">SSRN</a></li>
+          <li><a href="https://osf.io/a3jk5">OSF</a></li>
+          <li><a href="https://github.com/atharvasabnis1">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Atharva Sabnis, Dubai</span>
+  <span><a href="/llms.txt">llms.txt</a></span>
+</footer>
+
+<script type="text/plain" id="agentProfile">
+# Atharva Sabnis
+
+Independent researcher, Dubai. Studies how emerging technology gets adopted in regulated markets and what AI systems tell people about UAE rules. Site: https://atharvasabnis.com
+
+## Research
+- Core-answer agreement and elaboration uncertainty in AI answers on UAE virtual-asset regulation: a pilot audit of three consumer engines. SSRN working paper. https://papers.ssrn.com/abstract=7648478
+- Instruction and run sensitivity in AI grading of regulatory answers. Submitted. Dataset doi:10.6084/m9.figshare.34735080
+- Engine repeatability and drift on UAE virtual-asset questions. Preregistered on OSF. https://osf.io/a3jk5
+- Part of a continuing series on answer integrity and buyer-agent qualification; full list on the SSRN author page.
+- Book in progress: relevance engineering for businesses (generative engine optimisation).
+- Patent applications in progress: AI competitive-battlecard staleness detector; go-to-market motion selector.
+
+## Eleven cases (what, who had to say yes, outcome)
+1. Dry steam written into Indian pharma sanitisation SOPs; QA heads then the Indian FDA; entered Indian FDA recommended pharma workflows; customers incl. Delta Corp (Atron Digital).
+2. Document-reading AI for banks tested through a regulatory sandbox; bank risk and compliance; EY Foundry and DIFC FinTech Hive; the engine later read loan pools for structured finance (IN-D.ai).
+3. First systematic audit of AI answers on UAE virtual-asset rules; peer and regulator scrutiny; SSRN.
+4. India's first in-taxi infotainment platform; fleet operators and drivers; Ola Play and Uber followed (Fractal Media).
+5. Five-direction roof signage on Mumbai kaali-peeli taxis; Swabhimaan Taxi Union (Fractal Media).
+6. Licensed sports and Bollywood NFTs; studios, clubs and leagues; technology partner with Social Swag on the official '83 (Reliance Entertainment) drop; sports activations incl. Tottenham Hotspur v AS Roma at the I-Tech Cup (NFT Labs, ITSMYNE).
+7. Pure Room chemical-free sanitisation standard at Taj hotels; Taj housekeeping and Diversey compliance; rolled out across Taj North Goa (Atron Digital).
+8. Emissions-intelligence platform from cold start to a Google I/O feature, UN Global Compact participation, the Google for Startups Climate Change accelerator and two Gartner Magic Quadrant inclusions; innovation teams inside legacy industrials; customers incl. Nexa Resources and Hindustan Zinc, pilots with Saudi Aramco and Jabil (Eugenie.ai).
+9. Loan-eligibility web app for field staff at a pan-India school lender; credit committee and field force (Versura Shiksha).
+10. Expert Picks by MarketWind inside CoinDCX Futures; exchange product, legal and compliance; co-founder and director, Marketwind Services.
+11. Drone inspection as a normal tool in Indian cement plants; plant heads and safety officers; clients incl. ACC, Ambuja Cement, Adani; co-founder of an industrial inspection business.
+
+## Speaking
+IEEE India Blockchain Symposium, Pune (speaker). COP27 and COP28 executive sessions. GITEX Global and ADIPEC forums. eChai Ventures founder sessions. Podcasts: Jamsters, PitchRight.
+
+## Participations
+IEEE P1968 Working Group (Governance of Autonomous AI Agent Systems), participant. W3C AI Agent Protocol Community Group, member. OWASP GenAI Security Project, Agentic Security Initiative, contributor. Cloud Security Alliance AI Safety Working Group, contributor. OpenID Foundation AI Identity Management Community Group, member.
+
+## Currently
+Audit series on AI answers about the UAE, run through Magic Circle FZE LLC (Dubai). Co-founder and director, Marketwind Services. Convenes the Dubai Magic Circle. Go-to-market support for a Riyadh layer-0 infrastructure company.
+
+## Contact
+hello@atharvasabnis.com · https://atharvasabnis.com
+</script>
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var cases = Array.prototype.slice.call(document.querySelectorAll('.case'));
+  function setOpen(c, open) {
+    c.classList.toggle('open', open);
+    var b = c.querySelector('.more');
+    if (b) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); b.firstChild.nodeValue = open ? 'Fold' : 'Read the story'; }
+  }
+  cases.forEach(function (c) {
+    var b = c.querySelector('.more');
+    if (b) b.addEventListener('click', function () { setOpen(c, !c.classList.contains('open')); });
+  });
+  document.querySelectorAll('.group').forEach(function (g) { var first = g.querySelector('.case'); if (first) setOpen(first, true); });
+  var oa = document.getElementById('openAll'), ca = document.getElementById('closeAll');
+  if (oa) oa.addEventListener('click', function () { cases.forEach(function (c) { setOpen(c, true); }); });
+  if (ca) ca.addEventListener('click', function () { cases.forEach(function (c) { setOpen(c, false); }); });
+  if (location.hash === '#cases') { cases.forEach(function (c) { setOpen(c, true); }); }
+})();
+(function () {
+  var status = document.getElementById('copyStatus');
+  function copy(text, okMsg) {
+    var done = function () { if (status) status.textContent = okMsg; };
+    var fail = function () { if (status) status.textContent = 'Copy is blocked here. Open /llms.txt instead.'; };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fail);
+      } else { fail(); }
+    } catch (e) { fail(); }
+  }
+  var btn = document.getElementById('copyProfile');
+  if (btn) btn.addEventListener('click', function () {
+    var el = document.getElementById('agentProfile');
+    copy(el ? el.textContent.trim() : '', 'Copied. Paste it into any assistant.');
+  });
+  document.querySelectorAll('.prompts button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      copy(b.getAttribute('data-p'), 'Prompt copied.');
+      var old = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = old; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

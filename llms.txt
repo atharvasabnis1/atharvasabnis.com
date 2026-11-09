@@ -1,0 +1,36 @@
+# Atharva Sabnis
+
+Independent researcher, Dubai. Studies how emerging technology gets adopted in regulated markets and what AI systems tell people about UAE rules. Site: https://atharvasabnis.com
+
+## Research
+- Core-answer agreement and elaboration uncertainty in AI answers on UAE virtual-asset regulation: a pilot audit of three consumer engines. SSRN working paper. https://papers.ssrn.com/abstract=7648478
+- Instruction and run sensitivity in AI grading of regulatory answers. Submitted. Dataset doi:10.6084/m9.figshare.34735080
+- Engine repeatability and drift on UAE virtual-asset questions. Preregistered on OSF. https://osf.io/a3jk5
+- Part of a continuing series on answer integrity and buyer-agent qualification; full list on the SSRN author page.
+- Book in progress: relevance engineering for businesses (generative engine optimisation).
+- Patent applications in progress: AI competitive-battlecard staleness detector; go-to-market motion selector.
+
+## Eleven cases (what, who had to say yes, outcome)
+1. Dry steam written into Indian pharma sanitisation SOPs; QA heads then the Indian FDA; entered Indian FDA recommended pharma workflows; customers incl. Delta Corp (Atron Digital).
+2. Document-reading AI for banks tested through a regulatory sandbox; bank risk and compliance; EY Foundry and DIFC FinTech Hive; the engine later read loan pools for structured finance (IN-D.ai).
+3. First systematic audit of AI answers on UAE virtual-asset rules; peer and regulator scrutiny; SSRN.
+4. India's first in-taxi infotainment platform; fleet operators and drivers; Ola Play and Uber followed (Fractal Media).
+5. Five-direction roof signage on Mumbai kaali-peeli taxis; Swabhimaan Taxi Union (Fractal Media).
+6. Licensed sports and Bollywood NFTs; studios, clubs and leagues; technology partner with Social Swag on the official '83 (Reliance Entertainment) drop; sports activations incl. Tottenham Hotspur v AS Roma at the I-Tech Cup (NFT Labs, ITSMYNE).
+7. Pure Room chemical-free sanitisation standard at Taj hotels; Taj housekeeping and Diversey compliance; rolled out across Taj North Goa (Atron Digital).
+8. Emissions-intelligence platform from cold start to a Google I/O feature, UN Global Compact participation, the Google for Startups Climate Change accelerator and two Gartner Magic Quadrant inclusions; innovation teams inside legacy industrials; customers incl. Nexa Resources and Hindustan Zinc, pilots with Saudi Aramco and Jabil (Eugenie.ai).
+9. Loan-eligibility web app for field staff at a pan-India school lender; credit committee and field force (Versura Shiksha).
+10. Expert Picks by MarketWind inside CoinDCX Futures; exchange product, legal and compliance; co-founder and director, Marketwind Services.
+11. Drone inspection as a normal tool in Indian cement plants; plant heads and safety officers; clients incl. ACC, Ambuja Cement, Adani; co-founder of an industrial inspection business.
+
+## Speaking
+IEEE India Blockchain Symposium, Pune (speaker). COP27 and COP28 executive sessions. GITEX Global and ADIPEC forums. eChai Ventures founder sessions. Podcasts: Jamsters, PitchRight.
+
+## Participations
+IEEE P1968 Working Group (Governance of Autonomous AI Agent Systems), participant. W3C AI Agent Protocol Community Group, member. OWASP GenAI Security Project, Agentic Security Initiative, contributor. Cloud Security Alliance AI Safety Working Group, contributor. OpenID Foundation AI Identity Management Community Group, member.
+
+## Currently
+Audit series on AI answers about the UAE, run through Magic Circle FZE LLC (Dubai). Co-founder and director, Marketwind Services. Convenes the Dubai Magic Circle. Go-to-market support for a Riyadh layer-0 infrastructure company.
+
+## Contact
+hello@atharvasabnis.com · https://atharvasabnis.com

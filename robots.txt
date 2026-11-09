@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://atharvasabnis.com/sitemap.xml
