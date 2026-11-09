@@ -6,7 +6,7 @@ Independent researcher, Dubai. Studies how emerging technology gets adopted in r
 - Core-answer agreement and elaboration uncertainty in AI answers on UAE virtual-asset regulation: a pilot audit of three consumer engines. SSRN working paper. https://papers.ssrn.com/abstract=7648478
 - Instruction and run sensitivity in AI grading of regulatory answers. Submitted. Dataset doi:10.6084/m9.figshare.34735080
 - Engine repeatability and drift on UAE virtual-asset questions. Preregistered on OSF. https://osf.io/zjw2s
-- Part of a continuing series on answer integrity and buyer-agent qualification; full list on the SSRN author page.
+- Part of a continuing series on answer integrity and buyer-agent qualification; full list on the SSRN author page: https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=13711168
 - Book in progress: relevance engineering for businesses (generative engine optimisation).
 - Patent applications in progress: AI competitive-battlecard staleness detector; go-to-market motion selector.
 
